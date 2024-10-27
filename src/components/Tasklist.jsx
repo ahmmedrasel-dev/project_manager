@@ -1,13 +1,13 @@
-import { getAllTasks } from "../data/data";
+import { useContext } from "react";
+import { taskContext } from "../context";
 import Task from "./Task";
 
 const Tasklist = () => {
-  const todo = getAllTasks().filter((item) => item.category === "todo");
-  const on_progress = getAllTasks().filter(
-    (item) => item.category === "on-progress"
-  );
-  const done = getAllTasks().filter((item) => item.category === "done");
-  const revised = getAllTasks().filter((item) => item.category === "revised");
+  const { state } = useContext(taskContext);
+  const todo = state.filter((item) => item.category === "todo");
+  const on_progress = state.filter((item) => item.category === "on-progress");
+  const done = state.filter((item) => item.category === "done");
+  const revised = state.filter((item) => item.category === "revised");
   return (
     <div className="-mx-2 mb-6 flex flex-wrap">
       <div className="mb-4 w-full px-2 sm:w-1/2 md:w-1/4">
